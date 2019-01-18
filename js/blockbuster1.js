@@ -1,9 +1,9 @@
 let obj, dbParam, requestURL, request;
 obj ={table:"Films", limit: 20};
 dbParam = JSON.stringify(obj);
-requestURL = "http://192.168.1.114:8080/api/film";
+requestURL = "http://127.0.0.1:8080/api/film";
 request = new XMLHttpRequest();
-//filmDB = request.response;
+filmDB = request.response;
 
 request.open("GET",requestURL);
 request.setRequestHeader('Content-type','application/json');
@@ -11,14 +11,11 @@ request.setRequestHeader('Access-Control-Allow-Origin','*');
 request.responseType="json";
 request.send();
 
-
-
 request.onload = function(){
     tableCreation();
 }
 
 function tableCreation(){
-    let filmDB = request.response;
     let txt="";
     txt +="<table border='5'style='background-color:white' table align='center' bordercolor='white'>";
     txt +="<th>Title</th>";
@@ -39,7 +36,7 @@ function tableCreation(){
 }
 
 function returnMovie(value){
-    let requestURL = "http://192.168.1.114:8080/api/film/category/"+value;
+    let requestURL = "http://127.0.0.1:8080/api/film/category/"+value;
     request.open("GET",requestURL);
     request.setRequestHeader('Content-type','application/json');
     request.setRequestHeader('Access-Control-Allow-Origin','*');
@@ -57,10 +54,8 @@ function returnAll(){
         tableCreation();
 }
 
-
 function searchTitles(){
-    let filmDB2 = request.response;
-    console.log(filmDB2);
+    let filmDB2 = request.reponse;
     let txt="";
     txt +="<table border='5'style='background-color:white' table align='center' bordercolor='white'>";
     txt +="<th>Title</th>";
@@ -71,7 +66,7 @@ function searchTitles(){
     txt +="<th>Rating</th>";
     let searchInput=document.getElementById("textInput").value.toUpperCase();
     for(let z = 0; z < filmDB2.length; z++){  
-        if (String(filmDB2.title).includes(searchInput)){
+        if (filmdDB2.title[z].includes(searchInput)){
             txt += "<tr><td>" + filmDB2[z].title + "</td>";
             txt += "<td>" + filmDB2[z].description + "</td>";
             txt += "<td>" + filmDB2[z].category + "</td>";
@@ -81,5 +76,4 @@ function searchTitles(){
         }
         else console.log("Error");
     }
-    document.getElementById("Content").innerHTML = txt;
 }
