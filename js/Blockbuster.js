@@ -57,7 +57,6 @@ function returnAll(){
         tableCreation();
 }
 
-
 function searchTitles(){
     let filmDB2 = request.response;
     console.log(filmDB2);
@@ -70,8 +69,8 @@ function searchTitles(){
     txt +="<th>Price</th>";
     txt +="<th>Rating</th>";
     let searchInput=document.getElementById("textInput").value.toUpperCase();
-    for(let z = 0; z < filmDB2.length; z++){  
-        if (String(filmDB2.title).includes(searchInput)){
+    for(let z = 1; z < filmDB2.length; z++){  
+        if (filmDB2[z].title.includes(searchInput)){
             txt += "<tr><td>" + filmDB2[z].title + "</td>";
             txt += "<td>" + filmDB2[z].description + "</td>";
             txt += "<td>" + filmDB2[z].category + "</td>";
@@ -79,7 +78,6 @@ function searchTitles(){
             txt += "<td>" + filmDB2[z].price + "</td>";
             txt += "<td>" + filmDB2[z].rating + "</td></tr>";
         }
-        else console.log("Error");
     }
     document.getElementById("Content").innerHTML = txt;
 }

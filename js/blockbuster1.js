@@ -64,16 +64,16 @@ function searchTitles(){
     txt +="<th>Length</th>";
     txt +="<th>Price</th>";
     txt +="<th>Rating</th>";
-    let searchInput=document.getElementById("textInput").value.toUpperCase();
-    for(let z = 0; z < filmDB2.length; z++){  
-        if (filmdDB2.title[z].includes(searchInput)){
-            txt += "<tr><td>" + filmDB2[z].title + "</td>";
-            txt += "<td>" + filmDB2[z].description + "</td>";
-            txt += "<td>" + filmDB2[z].category + "</td>";
-            txt += "<td>" + filmDB2[z].length + "</td>";
-            txt += "<td>" + filmDB2[z].price + "</td>";
-            txt += "<td>" + filmDB2[z].rating + "</td></tr>";
-        }
-        else console.log("Error");
+    let searchInput=document.getElementById("textInput").value
+    let searchInput=searchInput.toUpperCase();
+        for(let z = 1; z < filmDB2.length; z++){  
+            if (filmdDB2.title[z].includes(searchInput)){
+                txt += "<tr><td>" + filmDB2[z].title + "</td>";
+                txt += "<td>" + filmDB2[z].description + "</td>";
+                txt += "<td>" + filmDB2[z].category + "</td>";
+                txt += "<td>" + filmDB2[z].length + "</td>";
+                txt += "<td>" + filmDB2[z].price + "</td>";
+                txt += "<td>" + filmDB2[z].rating + "</td></tr>";
+                }
     }
 }
